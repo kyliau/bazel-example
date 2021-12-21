@@ -1,3 +1,4 @@
+load("@rules_cc//cc:defs.bzl", "cc_binary")
 load(":example.bzl", "foo_binary")
 
 foo_binary(
@@ -15,10 +16,9 @@ foo_binary(
   name = "baz",
 )
 
-genrule(
-  name = "compiler_target",
-  srcs = ["compiler"],
-  outs = ["compiler_out"],
-  cmd = "cp $< $@",
-  executable = True,
+cc_binary(
+    name = "compiler_target",
+    srcs = ["compiler.cpp"],
+    deps = [
+    ],
 )
